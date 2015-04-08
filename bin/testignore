@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+out_file = File.new(".testignore", "w")
+
+out_file.puts("#Place RSpec Tags to be ignored one Tag on a Line#")
+
+out_file.close

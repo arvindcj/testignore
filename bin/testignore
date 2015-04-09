@@ -1,7 +1,20 @@
-#!/usr/bin/env ruby
+require 'optparse'
 
-out_file = File.new(".testignore", "w")
+def generate_testignore_file file=".testignore"
+  testignore_file = File.new("#{file}", "w")
+  testignore_file.puts("#Place RSpec Tags to be ignored one Tag on a Line#")
+  testignore_file.close
+end
 
-out_file.puts("#Place RSpec Tags to be ignored one Tag on a Line#")
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: testignore [options]"
 
-out_file.close
+   opts.on("-c", "--create", "Create testignore file") do |v|
+    options[:testignore] = v
+  end
+end.parse!
+
+if options[:testignore] == true
+  generate_testignore_file ARGV[0]
+end

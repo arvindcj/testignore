@@ -23,6 +23,10 @@ module TestIgnore
       ""
     end
 
+    def  minitest_ignore_tags
+      ""
+    end
+
     :private
     def ignore_tag
     end

@@ -1,12 +1,12 @@
 # Testignore
-*Used to temporarily disable Taged Tests.*
+*Used to temporarily disable Tagged Tests.*
 
 ## Usage
 
 ```
 require 'testignore'
 
-# if no 'testignore_file' is specified defaults to '.testignore' 
+# if no 'testignore_file' is specified, it defaults to '.testignore' 
 ignore = Testignore::File.new 'testignore_file' 
 
 # Ignoring RSpec Tests.
@@ -28,7 +28,7 @@ rspec:
 - tag: ignore_tag_two
 
 # ignore.rspec_ignore_tags - will produce 
---tags ~ignore_tag_one --tags ~ignore_tag_twos
+--tags ~ignore_tag_one --tags ~ignore_tag_two
 ```
 
 ### Cucumber Example
@@ -45,8 +45,6 @@ cucumber:
 # ignore.cucumber_ignore_tags - will produce 
 --tags ~ignore_tag_one,~ignore_tag_two --tags ~ignore_tag_three,~ignore_tag_four 
 ```
-
-Usecase
 
 
 

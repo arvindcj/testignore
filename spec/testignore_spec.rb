@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe TestIgnore do
-  it "test1", :test1, :test2 do
-    puts 1
+  it "create TestIgnore instance" do
+    ignore = TestIgnore::File.new
+    puts ignore.inspect
     #expect(TestIgnore.check).to match 'ok'
   end
   it "test2", :test1 do

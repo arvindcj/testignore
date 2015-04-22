@@ -1,12 +1,21 @@
+require 'yaml'
+
+
 module TestIgnore
-  class File
+  class IgnoreFile
     def initialize file='.testignore'
-      @testignore_file = file
+      @testignore_file = file if File.file? file
       @ignore_tags = []
       @rspec_ignore_tags_list = ''
     end
 
     def read_file
+      yaml = nil
+      begin 
+       yaml = YAML.load @testignore_file || raise
+      raise
+        p "ERROR: File not found #{@testignore_file}" 
+      end
       open(@testignore_file, "rb").each_line do |line|
         @ignore_tags << line.chomp if !line.match /#/
       end

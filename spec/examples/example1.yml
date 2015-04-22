@@ -1,0 +1,15 @@
+# turn off all tests
+killswitch: not_implemented
+
+# Read: run Tests that contain tag1 and tag2
+rspec:
+- tag: tag1
+- tag: tag2
+
+# Read: run Tests that contain (tag1 or tag2) and (tag1 or tag2)
+cucumber:
+- tag1: tag1
+  tag2: tag2
+
+- tag1: tag3
+  tag2: tag4 

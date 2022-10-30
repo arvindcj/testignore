@@ -1,33 +1,64 @@
 # Testignore
+*Used to gain file grained control over temporarily disabling Tests.*
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/testignore`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Install
+```
+  gem install testignore
 
-TODO: Delete this and the text above, and describe your gem
+  or
 
-## Installation
-
-Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add testignore
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install testignore
+  gem 'testignore'
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+require 'testignore'
 
-## Development
+# if no 'testignore_file' is specified, it defaults to '.testignore'
+ignore = Testignore::File.new '/path .. to/testignore_file'
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+# Ignoring RSpec Tests.
+ignore.rspec_ignore    
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+# Ignoring cucumber Tests.
+ignore.cucumber_ignore
+```
 
-## Contributing
+### RSpec Example
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/testignore.
+```
+.testignore.yml
 
-## License
+rspec: #place \# before rspec to deactivate testignore file.
+  tags:
+    - ignore_tag_one
+    - ignore_tag_two
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+  files:
+    - file01_spec.rb
+    - file01_spec.rb
+
+  class:
+    - class01:method01
+    - class02:method02
+    - module01:method03
+```
+
+### Cucumber Example
+```
+.testignore.yml
+
+cucumber: #place \# before cucumber to deactivate testignore file.
+
+  tags: [tag01, tag02]
+
+  files:
+    - file01_spec.rb
+    - file01_spec.rb
+
+  class:
+    - class01:method01
+    - class02:method02
+    - module01:method03
+```
